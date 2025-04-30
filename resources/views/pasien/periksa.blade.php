@@ -79,7 +79,7 @@
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $periksa->id }}</td>
                                                     <td>{{ $periksa->dokter->nama }}</td>
-                                                    <td>{{ $periksa->tgl_periksa ?? '-' }}</td>
+                                                    <td>{{ $periksa->tgl_periksa ? \Carbon\Carbon::parse($periksa->tgl_periksa)->format('d/m/Y') : '-' }}</td>
                                                     <td>{{ $periksa->catatan ?? '-' }}</td>
                                                     <td>
                                                         @if(count($periksa->detailPeriksa) > 0)
@@ -96,8 +96,6 @@
                                                     <td>
                                                         @if($periksa->status == 'selesai')
                                                             <span class="badge badge-success">Selesai</span>
-                                                        @elseif($periksa->status == 'dalam proses')
-                                                            <span class="badge badge-warning">Dalam Proses</span>
                                                         @elseif($periksa->status == 'menunggu')
                                                             <span class="badge badge-info">Menunggu</span>
                                                         @else
