@@ -61,7 +61,6 @@
                                 <label for="status">Status Pemeriksaan</label>
                                 <select name="status" id="status" class="form-control" required>
                                     <option value="menunggu" {{ (old('status', $periksa->status) == 'menunggu') ? 'selected' : '' }}>Menunggu</option>
-                                    <option value="dalam proses" {{ (old('status', $periksa->status) == 'dalam proses') ? 'selected' : '' }}>Dalam Proses</option>
                                     <option value="selesai" {{ (old('status', $periksa->status) == 'selesai') ? 'selected' : '' }}>Selesai</option>
                                 </select>
                                 @error('status')
