@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Register | Klinik</title>
+  <title>Vex Klinik | Register</title>
 
   <!-- Styles -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -17,7 +17,7 @@
 <div class="register-box">
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="#" class="h1"><b>KLINIK</b>APP</a>
+      <a href="#" class="h1"><b>Vex</b>Klinik</a>
     </div>
     <div class="card-body">
       <p class="login-box-msg">Daftar akun baru</p>

@@ -1,10 +1,11 @@
 <?php
 
+use App\Http\Controllers\PeriksaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ObatController;
-use App\Models\Periksa;
+use App\Http\Controllers\MemeriksaController;
 
 /* Halaman Awal */
 Route::get('/', function () {
@@ -35,13 +36,8 @@ Route::middleware('auth')->group(function () {
             return view('pasien.dashboard');
         })->name('pasien.dashboard');
 
-        Route::get('/pasien/periksa', function () {
-            return view('pasien.periksa');
-        })->name('pasien.periksa');
-
-        Route::get('/pasien/riwayat', function () {
-            return view('pasien.riwayat');
-        })->name('pasien.riwayat');
+        Route::get('/pasien/periksa', [PeriksaController::class,'index'])->name('pasien.periksa');
+        Route::post('/pasien/periksa', [PeriksaController::class,'store'])->name('pasien.periksa.store');
     });
 
     Route::middleware('role:dokter')->group(function () {
@@ -49,10 +45,11 @@ Route::middleware('auth')->group(function () {
             return view('dokter.dashboard'); // ini akan arahkan ke blade
         })->middleware('auth')->name('dokter.dashboard');
 
-        Route::get('/dokter/periksa', function () {
-            $periksas = Periksa::all();
-            return view('dokter.periksa', compact('periksas'));
-        })->name('dokter.periksa');
+        Route::get('/dokter/memeriksa', [MemeriksaController::class, 'index'])->name('dokter.memeriksa');
+        Route::get('/dokter/memeriksa/{id}', [MemeriksaController::class, 'edit'])->name('dokter.memeriksa.edit');
+        Route::put('/dokter/memeriksa/{id}', [MemeriksaController::class, 'update'])->name('dokter.memeriksa.update');
+        Route::put('/dokter/memeriksa/{id}/status', [MemeriksaController::class, 'updateStatus'])->name('dokter.memeriksa.status');
+        Route::put('/dokter/memeriksa/{id}/status', [MemeriksaController::class, 'updateStatus'])->name('dokter.memeriksa.status');
 
         Route::get('/dokter/obat', [ObatController::class, 'index'])->name('dokter.obat');
         Route::post('/dokter/obat', [ObatController::class, 'store'])->name('dokter.obat.store');

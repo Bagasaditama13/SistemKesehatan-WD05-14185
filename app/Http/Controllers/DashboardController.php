@@ -38,9 +38,5 @@ class DashboardController extends Controller
     {
         return view('pasien.periksa');
     }
-    public function pasienriwayat()
-    {
-        return view('pasien.riwayat');
-    }
 }
 
