@@ -42,6 +42,7 @@
                                     <th>NO</th>
                                     <th>Pasien</th>
                                     <th>Tanggal Periksa</th>
+                                    <th>No. RM</th>
                                     <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -52,11 +53,10 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $periksa->pasien->nama }}</td>
                                     <td>{{ $periksa->tgl_periksa ? \Carbon\Carbon::parse($periksa->tgl_periksa)->format('d/m/Y') : 'Belum diperiksa' }}</td>
+                                    <td>{{ $periksa->pasien->no_rm ?? '-' }}</td>
                                     <td>
                                         @if($periksa->status == 'selesai')
                                             <span class="badge badge-success">Selesai</span>
-                                        @elseif($periksa->status == 'dalam proses')
-                                            <span class="badge badge-warning">Dalam Proses</span>
                                         @elseif($periksa->status == 'menunggu')
                                             <span class="badge badge-info">Menunggu</span>
                                         @else
