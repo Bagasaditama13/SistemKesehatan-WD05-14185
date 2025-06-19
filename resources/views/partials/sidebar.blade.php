@@ -41,6 +41,12 @@
                         <p>Riwayat Pasien</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('dokter.profil') }}" class="nav-link {{ request()->routeIs('dokter.profil') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-user-md"></i>
+                        <p>Profil</p>
+                    </a>
+                </li>
                 @elseif (Auth::user()->role == 'pasien')
                 <li class="nav-item">
                     <a href="{{ route('pasien.dashboard') }}" class="nav-link {{ request()->routeIs('pasien.dashboard') ? 'active' : '' }}">
@@ -74,15 +80,6 @@
                     </a>
                 </li>
                 @endif
-                <li class="nav-item">
-                    <form action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <button type="submit" class="nav-link bg-danger">
-                            <i class="nav-icon fas fa-sign-out-alt"></i>
-                            <p>Logout</p>
-                        </button>
-                    </form>
-                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
